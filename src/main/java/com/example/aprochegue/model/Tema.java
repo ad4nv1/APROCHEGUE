@@ -27,7 +27,6 @@ import javax.validation.constraints.Size;
  * @since 1.0
  * 
  */
-
 @Entity
 @Table(name = "tb_tema")
 public class Tema {
