@@ -35,13 +35,11 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "tb_tema")
 public class Tema {
-	
-	
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	
 	@NotNull
 	@Size(min = 5, max = 1000)
@@ -86,8 +84,5 @@ public class Tema {
 	public void setAssunto(String assunto) {
 		this.assunto = assunto;
 	}
-
-	
-	
 
 }
