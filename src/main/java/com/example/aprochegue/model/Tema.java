@@ -23,7 +23,12 @@ import javax.validation.constraints.Size;
  * <p>
  * - assunto: Represents the Subject of the table "tema". String NOT NULL;
  * </p>
- * @author Adan, Matheus, Lucas, Júlia, Mayara, Guilherme
+ * @author Adan
+ * @author Matheus
+ * @author Lucas
+ * @author Júlia
+ * @author Mayara
+ * @author Guilherme
  * @since 1.0
  * 
  */
