@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -36,8 +35,8 @@ public class Postagem {
 	@Size(min = 5, max = 1500)
 	private String texto;
 	
-	@Lob
-	public Byte []imagem;
+	
+	public String imagem;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
@@ -75,11 +74,11 @@ public class Postagem {
 		this.texto = texto;
 	}
 
-	public Byte[] getImagem() {
+	public String getImagem() {
 		return imagem;
 	}
 
-	public void setImagem(Byte[] imagem) {
+	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
 
