@@ -20,7 +20,7 @@ import com.example.aprochegue.model.Tema;
 import com.example.aprochegue.repository.TemaRepository;
 
 @RestController
-@RequestMapping("tema")
+@RequestMapping("/tema")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaController {
 	
