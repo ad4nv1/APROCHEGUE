@@ -1,6 +1,5 @@
 package com.example.aprochegue.model;
 
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -21,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Usuario {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
 	private String nome;
@@ -29,14 +28,31 @@ public class Usuario {
 	@Email
 	private String email;
 	@NotNull
-	@Size (min = 5, max = 30)
+	@Size(min = 5, max = 30)
 	private String senha;
-	//@NotNull
-	//private String token;
-	
+	// @NotNull
+	// private String token;
+
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
-	private List <Postagem> postagem;
+	private List<Postagem> postagem;
+
+	public Usuario(Long idUsuario, String nome, String email, String senha) {
+		this.id = idUsuario;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
+	public Usuario(String nome, String email, String senha) {
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
+	public Usuario() {
+
+	}
 
 	public Long getId() {
 		return id;
@@ -77,9 +93,5 @@ public class Usuario {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-	
-	
-	
-	
-	
+
 }
