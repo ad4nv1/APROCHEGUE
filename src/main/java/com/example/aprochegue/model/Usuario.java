@@ -31,8 +31,8 @@ public class Usuario {
 	@NotNull
 	@Size (min = 5, max = 30)
 	private String senha;
-	@NotNull
-	private String token;
+	//@NotNull
+	//private String token;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
@@ -68,14 +68,6 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
 	}
 
 	public List<Postagem> getPostagem() {
