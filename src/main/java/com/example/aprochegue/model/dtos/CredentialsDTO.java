@@ -38,6 +38,4 @@ public class CredentialsDTO {
 		this.token = token;
 	}
 	
-	
-	
 }
