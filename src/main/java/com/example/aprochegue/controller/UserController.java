@@ -23,6 +23,7 @@ import com.example.aprochegue.model.Usuario;
 import com.example.aprochegue.model.dtos.CredentialsDTO;
 import com.example.aprochegue.model.dtos.UsuarioLoginDTO;
 import com.example.aprochegue.repository.UserRepository;
+import com.example.aprochegue.servicos.UserServicos;
 
 @RestController
 @RequestMapping("/api/v1/usuario")
