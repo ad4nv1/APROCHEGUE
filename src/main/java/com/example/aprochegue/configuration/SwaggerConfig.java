@@ -38,15 +38,15 @@ public class SwaggerConfig {
 	}
 
 	public static ApiInfo metadata() {
-		return new ApiInfoBuilder().title("API - Blog Pessoal").description("Projeto Integrador")
+		return new ApiInfoBuilder().title("APROCHEGUE").description("Projeto Integrador")
 				.version("1.0.0").license("Apache License Version 2.0").licenseUrl("https://github.com/ad4nv1")
 				.contact(contact()).build();
 	}
 
 	private static Contact contact() {
-		return new Contact("Adan Vinicius", 
-				"https://github.com/ad4nv1", 
-				"adan@gmail.com");
+		return new Contact("APROCHEGUE", 
+				"https://github.com/ad4nv1/APROCHEGUE", 
+				"aprochegue@gmail.com");
 	}
 
 	private static List<Response> responseMessage() {
