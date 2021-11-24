@@ -3,6 +3,8 @@ package com.example.aprochegue.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.aprochegue.model.Postagem;
-import com.example.aprochegue.model.Tema;
 import com.example.aprochegue.repository.PostagemRepository;
-import com.example.aprochegue.repository.TemaRepository;
 
 @RestController
 @RequestMapping("/Postagem")
@@ -50,13 +50,13 @@ public class PostagemController {
 	
 	
 	@PostMapping
-	public ResponseEntity<Postagem> post (@RequestBody Postagem postagem){
+	public ResponseEntity<Postagem> post (@Valid @RequestBody Postagem postagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
 	}
 	
 	
 	@PutMapping
-	public ResponseEntity<Postagem> put (@RequestBody Postagem postagem){
+	public ResponseEntity<Postagem> put (@Valid @RequestBody Postagem postagem){
 		return ResponseEntity.ok(repository.save(postagem));
 	}
 	

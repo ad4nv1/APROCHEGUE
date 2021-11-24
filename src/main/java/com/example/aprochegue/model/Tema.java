@@ -59,7 +59,7 @@ public class Tema {
 	@Size(min = 5, max = 255)
 	private String assunto;
 	
-	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List <Postagem> postagem;
 	
