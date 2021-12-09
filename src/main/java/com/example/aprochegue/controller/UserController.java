@@ -22,8 +22,8 @@ import com.example.aprochegue.repository.UserRepository;
 import com.example.aprochegue.servicos.UserServicos;
 
 @RestController
-@RequestMapping("/api/v1/usuario")
-@CrossOrigin(allowedHeaders = "*", origins = "*")
+@RequestMapping("/usuarios")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 	
 	@Autowired
