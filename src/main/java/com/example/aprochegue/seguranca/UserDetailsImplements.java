@@ -10,7 +10,7 @@ import com.example.aprochegue.model.Usuario;
 
 public class UserDetailsImplements implements UserDetails {
 
-	private static final Long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	private String email;
 	
