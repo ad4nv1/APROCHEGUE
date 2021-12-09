@@ -47,20 +47,17 @@ public class Usuario {
 
 	
 	
-	public Usuario() {
-
-	}
+public Usuario() {}
 	
-	public Usuario(Long idUsuario, String nome, String email, String senha) {
-		this.id = idUsuario;
+	public Usuario(Long id, String nome, String usuario, String senha) {
+		this.id = id;
 		this.nome = nome;
-		this.email = email;
+		this.email = usuario;
 		this.senha = senha;
 	}
-
-	public Usuario(String nome, String email, String senha) {
+	public Usuario(String nome, String usuario, String senha) {
 		this.nome = nome;
-		this.email = email;
+		this.email = usuario;
 		this.senha = senha;
 	}
 
