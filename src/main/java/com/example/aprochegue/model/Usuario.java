@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,24 +21,28 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotNull
+	@Size(min = 2, max = 100)
 	private String nome;
-	@NotNull
-	@Email
-	private String email;
+	
 	@NotNull
 	@Size(min = 5, max = 100)
-	private String senha;
+	private String email;
 	
 	private String foto;
 	
 	private String tipo;
 	
+	@NotNull
+	@Size(min = 5, max = 100)
+	private String senha;
+	
 	// @NotNull
 	// private String token;
 
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("usuario")
+	@OneToMany(mappedBy = "usuario", cascade =  CascadeType.REMOVE)
+	@JsonIgnoreProperties({"usuario"})
 	private List<Postagem> postagem;
 
 	
