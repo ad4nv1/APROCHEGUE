@@ -28,14 +28,18 @@ public class UserServicos {
 		return encoder.encode(senha);
 	}
 	
-	public Optional<Object> cadastrarUsuario(Usuario usuarioParaCadastrar) {
-		return repository.findByEmail(usuarioParaCadastrar.getEmail()).map(usuarioExistente -> {
-			return Optional.empty();
-		}).orElseGet(() -> {
-			usuarioParaCadastrar.setSenha(encriptadorDeSenha(usuarioParaCadastrar.getSenha()));
-			return Optional.ofNullable(repository.save(usuarioParaCadastrar));
-		});
+	//return repository.findByEmail(usuarioParaCadastrar.getEmail()).map(usuarioExistente -> {
+	//	return Optional.empty();
+	//}).orElseGet(() -> {
+	//	usuarioParaCadastrar.setSenha(encriptadorDeSenha(usuarioParaCadastrar.getSenha()));
+	//	return Optional.ofNullable(repository.save(usuarioParaCadastrar));
+	//});
+	public Optional<Usuario> cadastrarUsuario(Usuario usuarioParaCadastrar) {
+		if (repository.findByEmail(usuarioParaCadastrar.getEmail()).isPresent())
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 
+		usuarioParaCadastrar.setSenha(criptografarSenha(usuarioParaCadastrar.getSenha()));
+		return Optional.of(repository.save(usuarioParaCadastrar));
 	}
 	
 	public Optional<Usuario> atualizarUsuario(Usuario usuarioParaAtualizar) {
@@ -55,6 +59,8 @@ public class UserServicos {
 		return "Basic " + new String(estruturaBase64);
 
 	}
+	
+	
 	
 	public ResponseEntity<CredentialsDTO> pegarCredenciais(UsuarioLoginDTO usuarioParaAutenticar) {
 		return repository.findByEmail(usuarioParaAutenticar.getEmail()).map(resp -> {
@@ -80,6 +86,17 @@ public class UserServicos {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email não existe!"); // Email não existe
 		});
 		
+	}
+	
+	private String criptografarSenha(String senha) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String senhaEncoder = encoder.encode(senha);
+		return senhaEncoder;
+	}
+	
+	private boolean compararSenhas(String senhaDigitada, String senhaBanco) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder.matches(senhaDigitada, senhaBanco);		
 	}
 	
 
