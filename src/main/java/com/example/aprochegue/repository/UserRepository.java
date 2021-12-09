@@ -11,7 +11,7 @@ import com.example.aprochegue.model.Usuario;
 @Repository
 public interface UserRepository extends JpaRepository<Usuario, Long>{
 
-	public Optional<Usuario> findByUsuario(String usuario);
+	public Optional<Usuario> findByEmail(String usuario);
 	
 	public Optional<Usuario> findByNome(String nome);
 	
