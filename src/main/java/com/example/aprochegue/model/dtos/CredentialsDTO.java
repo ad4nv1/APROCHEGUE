@@ -2,13 +2,14 @@ package com.example.aprochegue.model.dtos;
 
 public class CredentialsDTO {
 	
-	private Long idUsuario;
+	private long idUsuario;
 	private String nome;
 	private String email;
 	private String senha;
 	private String foto;
 	private String tipo;
 	private String token;
+	
 	public Long getIdUsuario() {
 		return idUsuario;
 	}

@@ -10,6 +10,7 @@ import com.example.aprochegue.model.Usuario;
 public interface  UserRepository extends JpaRepository<Usuario, Long>{
 	
 	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
+	public Optional<Usuario> findByNome(String nome);
 	public Optional<Usuario> findByEmail(String email);
 	
 }
