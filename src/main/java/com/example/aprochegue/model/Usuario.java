@@ -17,7 +17,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
-
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,17 +38,13 @@ public class Usuario {
 	@NotNull
 	@Size(min = 5, max = 100)
 	private String senha;
-	
-	// @NotNull
-	// private String token;
 
 	@OneToMany(mappedBy = "usuario", cascade =  CascadeType.REMOVE)
 	@JsonIgnoreProperties({"usuario"})
 	private List<Postagem> postagem;
 
-	
-	
-public Usuario() {}
+
+	public Usuario() {}
 	
 	public Usuario(Long id, String nome, String usuario, String senha) {
 		this.id = id;
@@ -61,7 +58,6 @@ public Usuario() {}
 		this.senha = senha;
 	}
 
-	
 
 	public Long getId() {
 		return id;
@@ -79,12 +75,12 @@ public Usuario() {}
 		this.nome = nome;
 	}
 
-	public String getEmail() {
+	public String getUsuario() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.email = usuario;
 	}
 
 	public String getSenha() {
@@ -94,15 +90,7 @@ public Usuario() {}
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-	public List<Postagem> getPostagem() {
-		return postagem;
-	}
-
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
-	}
-
+	
 	public String getFoto() {
 		return foto;
 	}
@@ -110,7 +98,7 @@ public Usuario() {}
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -118,6 +106,15 @@ public Usuario() {}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
+	
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}	
 	
 	
 

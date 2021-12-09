@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 import com.example.aprochegue.model.Usuario;
 
 @Repository
-public interface  UserRepository extends JpaRepository<Usuario, Long>{
+public interface UserRepository extends JpaRepository<Usuario, Long>{
+
+	public Optional<Usuario> findByUsuario(String usuario);
 	
-	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
 	public Optional<Usuario> findByNome(String nome);
-	public Optional<Usuario> findByEmail(String email);
+	
+	public List<Usuario> findAllByNomeContainingIgnoreCase (String nome);
 	
 }

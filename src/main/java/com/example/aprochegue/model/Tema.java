@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -39,37 +38,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * 
  */
 @Entity
-@Table(name = "tb_tema")
+@Table(name ="tb_tema")
 public class Tema {
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotNull
-	@Size(min = 5, max = 1000)
 	private String descricao;
-	
-	@NotNull
-	@Size(min = 5, max = 255)
-	private String titulo;
-	
-	@NotNull
-	@Size(min = 5, max = 255)
-	private String assunto;
 	
 	@OneToMany(mappedBy = "tema", cascade =  CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
-	
-	public List<Postagem> getPostagem() {
-		return postagem;
-	}
-
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
-	}
 
 	public Long getId() {
 		return id;
@@ -87,20 +68,13 @@ public class Tema {
 		this.descricao = descricao;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public List<Postagem> getPostagem() {
+		return postagem;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
 	}
 
-	public String getAssunto() {
-		return assunto;
-	}
-
-	public void setAssunto(String assunto) {
-		this.assunto = assunto;
-	}
 
 }

@@ -12,20 +12,21 @@ import com.example.aprochegue.model.Usuario;
 import com.example.aprochegue.repository.UserRepository;
 
 @Service
-public class UserDetailsServiceImplements implements UserDetailsService {
+public class UserDetailsServiceImplements implements UserDetailsService{
 	
 	@Autowired
 	private UserRepository userRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException{
-		Optional<Usuario> user = userRepository.findByEmail(userName);
+		Optional<Usuario> user = userRepository.findByUsuario(userName);
 		
 		user.orElseThrow(()-> new UsernameNotFoundException(userName+ " not found."));
 		
 		return user.map(UserDetailsImplements::new).get();
 	
 	}
+
 //	@Autowired
 //	private UserRepository repository;
 //

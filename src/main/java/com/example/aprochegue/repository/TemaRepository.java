@@ -10,6 +10,7 @@ import com.example.aprochegue.model.Tema;
 @Repository
 public interface TemaRepository extends JpaRepository<Tema, Long>{
 	
-	public List<Tema> findAllByTituloContainingIgnoreCase(String titulo);
+	public List<Tema> findAllByDescricaoContainingIgnoreCase(String descricao);
 
+	
 }
