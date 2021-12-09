@@ -67,6 +67,8 @@ public class UserServicos {
 				objetoCredenciaisDTO.setToken(gerarToken(usuarioParaAutenticar.getEmail(), usuarioParaAutenticar.getSenha()));
 				objetoCredenciaisDTO.setIdUsuario(resp.getId());
 				objetoCredenciaisDTO.setNome(resp.getNome());
+				objetoCredenciaisDTO.setFoto(resp.getFoto());
+				objetoCredenciaisDTO.setTipo(resp.getTipo());
 				objetoCredenciaisDTO.setEmail(resp.getEmail());
 				objetoCredenciaisDTO.setSenha(resp.getSenha());
 

@@ -30,6 +30,11 @@ public class Usuario {
 	@NotNull
 	@Size(min = 5, max = 100)
 	private String senha;
+	
+	private String foto;
+	
+	private String tipo;
+	
 	// @NotNull
 	// private String token;
 
@@ -37,6 +42,12 @@ public class Usuario {
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 
+	
+	
+	public Usuario() {
+
+	}
+	
 	public Usuario(Long idUsuario, String nome, String email, String senha) {
 		this.id = idUsuario;
 		this.nome = nome;
@@ -50,9 +61,7 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Usuario() {
-
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -93,5 +102,23 @@ public class Usuario {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
 
 }

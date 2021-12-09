@@ -6,6 +6,8 @@ public class CredentialsDTO {
 	private String nome;
 	private String email;
 	private String senha;
+	private String foto;
+	private String tipo;
 	private String token;
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -37,5 +39,18 @@ public class CredentialsDTO {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 	
 }
