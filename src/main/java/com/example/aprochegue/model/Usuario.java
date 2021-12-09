@@ -75,13 +75,7 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getUsuario() {
-		return email;
-	}
-
-	public void setUsuario(String usuario) {
-		this.email = usuario;
-	}
+	
 
 	public String getSenha() {
 		return senha;
@@ -89,6 +83,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	public String getFoto() {
