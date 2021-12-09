@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.aprochegue.model.dtos.UsuarioLoginDTO;
 import com.example.aprochegue.model.Usuario;
-import com.example.aprochegue.model.dtos.CredentialsDTO;
 import com.example.aprochegue.repository.UserRepository;
 import com.example.aprochegue.servicos.UserServicos;
 
@@ -46,7 +46,7 @@ public class UserController {
 
 	
 	@PostMapping("/logar")
-	public ResponseEntity<CredentialsDTO> Autentication(@Valid @RequestBody Optional<CredentialsDTO> user){
+	public ResponseEntity<UsuarioLoginDTO> Autentication(@Valid @RequestBody Optional<UsuarioLoginDTO> user){
 		return usuarioService.logarUsuario(user).map(resp -> ResponseEntity.ok(resp))
 		        .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
@@ -63,7 +63,6 @@ public class UserController {
                 .map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
                 .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
-
 //	private @Autowired UserRepository repositorio;
 //	private @Autowired UserServicos servicos;
 //
