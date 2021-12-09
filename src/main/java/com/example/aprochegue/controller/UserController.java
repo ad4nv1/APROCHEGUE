@@ -76,13 +76,15 @@ public class UserController {
 
 	}
 
+	//return servicos.cadastrarUsuario(novoUsuario).map(resp -> ResponseEntity.status(201).body(resp))
+	//		.orElseThrow(() -> {
+		//		throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+		//				"Email existente, cadastre outro email!.");
+		//	});
 	@PostMapping("/save")
 	public ResponseEntity<Object> save(@Valid @RequestBody Usuario novoUsuario) {
-		return servicos.cadastrarUsuario(novoUsuario).map(resp -> ResponseEntity.status(201).body(resp))
-				.orElseThrow(() -> {
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-							"Email existente, cadastre outro email!.");
-				});
+		return ResponseEntity.status(HttpStatus.CREATED)
+		        .body(servicos.cadastrarUsuario(novoUsuario).get());
 
 	}
 

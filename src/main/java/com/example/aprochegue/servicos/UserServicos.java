@@ -79,7 +79,7 @@ public class UserServicos {
 		}).orElseGet(() -> {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email não existe!"); // Email não existe
 		});
-
+		
 	}
 	
 
