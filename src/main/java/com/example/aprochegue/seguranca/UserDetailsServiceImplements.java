@@ -26,20 +26,6 @@ public class UserDetailsServiceImplements implements UserDetailsService{
 		return user.map(UserDetailsImplements::new).get();
 	
 	}
-
-//	@Autowired
-//	private UserRepository repository;
-//
-//	@Override
-//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		Optional<Usuario> objetoOptional = repository.findByEmail(username);
-//		if (objetoOptional.isPresent()) {
-//			return new UserDetailsImplements(objetoOptional.get());
-//		}
-//		else {
-//			throw new UsernameNotFoundException(username+"Usuario não existe!");
-//		}
-//	}
 	
 	
 }
