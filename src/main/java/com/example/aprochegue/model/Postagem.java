@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,7 +31,7 @@ public class Postagem {
 	private String titulo;
 	
 	@NotNull
-	@Size(min = 5, max = 100)
+	@Size(min = 5, max = 500)
 	private String texto;
 	
 	 
@@ -39,11 +40,13 @@ public class Postagem {
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
 	@ManyToOne
+	@JoinColumn(name = "tema_id")
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
 	
 	@ManyToOne
-	@JsonIgnoreProperties({"postagem", "id", "senha", "token"})
+	@JoinColumn(name = "usuario_id")
+	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
 
 
