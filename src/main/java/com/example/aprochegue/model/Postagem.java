@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "tb_postagem")
 public class Postagem {
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -33,8 +32,6 @@ public class Postagem {
 	@NotNull
 	@Size(min = 5, max = 500)
 	private String texto;
-	
-	 
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
@@ -48,7 +45,6 @@ public class Postagem {
 	@JoinColumn(name = "usuario_id")
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
-
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -89,7 +85,6 @@ public class Postagem {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
 
 	public Tema getTema() {
 		return tema;
@@ -99,5 +94,4 @@ public class Postagem {
 		this.tema = tema;
 	}
 		
-
 }

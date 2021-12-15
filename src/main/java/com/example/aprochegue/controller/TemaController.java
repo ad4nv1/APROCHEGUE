@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.aprochegue.model.Tema;
 import com.example.aprochegue.repository.TemaRepository;
@@ -52,12 +53,17 @@ public class TemaController {
 	
 	@PutMapping
 	public ResponseEntity<Tema> put (@Valid @RequestBody Tema tema){
-		return ResponseEntity.ok(repository.save(tema));
+		return repository.findById(tema.getId())
+		        .map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema)))
+		        .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
-		repository.deleteById(id);
+		Optional<Tema> tema = repository.findById(id);
+        if(tema.isEmpty())
+	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        repository.deleteById(id);
 	}
 
 }

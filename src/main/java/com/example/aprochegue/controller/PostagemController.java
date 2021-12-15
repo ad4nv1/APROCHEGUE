@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.aprochegue.model.Postagem;
 import com.example.aprochegue.repository.PostagemRepository;
@@ -57,12 +58,17 @@ public class PostagemController {
 	
 	@PutMapping
 	public ResponseEntity<Postagem> put (@Valid @RequestBody Postagem postagem){
-		return ResponseEntity.ok(repository.save(postagem));
+		return repository.findById(postagem.getId())
+		        .map(resp -> ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem)))
+		        .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
-		repository.deleteById(id);
+		Optional<Postagem> post = repository.findById(id);
+        if(post.isEmpty())
+	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        repository.deleteById(id);
 	}
 	
 	
