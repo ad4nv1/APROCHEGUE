@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.aprochegue.model.Postagem;
+import com.example.aprochegue.model.Tema;
 import com.example.aprochegue.repository.PostagemRepository;
 
 @RestController
@@ -69,6 +70,7 @@ public class PostagemController {
         if(post.isEmpty())
 	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         repository.deleteById(id);
+        
 	}
 	
 	
